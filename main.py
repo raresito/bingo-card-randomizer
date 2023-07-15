@@ -1,6 +1,7 @@
 # This is a sample Python script.
 import random
 import pprint
+import pickle
 
 
 # Press ⌃R to execute it or replace it with your code.
@@ -115,6 +116,16 @@ if __name__ == '__main__':
 
             carduri[card_index] = selectie_cadouri + selectie_eventuri
 
+            for key, value in carduri.items():
+                if(len([x for n, x in enumerate(value) if x in value[:n]])) > 0:
+                    frequency = {}
+
+    with open('extragere.pkl', 'wb') as fp:
+        pickle.dump(carduri, fp)
+        print('dictionary saved successfully to file')
+
     pprint.pprint(carduri)
     pprint.pprint(frequency)
     print(sum(frequency.values()))
+
+    
